@@ -1,3 +1,10 @@
 .cropselection {
   display: none;
 }
+img#farm {
+  width: 160%;
+}
+.redborder{
+  border: solid;
+  border-color: red;
+}
