@@ -4,7 +4,12 @@ import cornImage from './img/corn.png';
 import deadCorn from './img/dead.png';
 import sickleImage from './img/sickle.png';
 import hoseImage from './img/hose.png';
-
+import growPotato from './img/growPotato.png';
+import growWheat from './img/growWheat.png';
+import potatoImage from './img/potatoImage.png';
+import wheatImage from './img/wheatImage.png';
+import deadPotato from './img/deadPotato.png';
+import deadWheat from './img/deadWheat.png';
 import $ from 'jQuery';
 
 export class Ranch {
@@ -51,7 +56,14 @@ export class Ranch {
         if (this.farm["typeOfCrop"]=="Corn") {
           this.farm["image"]=deadCorn;
           changeFarmImage(this.farm["image"]);
+        } else if(this.farm["typeOfCrop"]=="Wheat") {
+          this.farm["image"]=deadWheat;
+          changeFarmImage(this.farm["image"]);
+        } else {
+          this.farm["image"]=deadPotato;
+          changeFarmImage(this.farm["image"]);
         }
+
         clearInterval(lifeInterval);
         this.farm["timeToGrow"]=0;
         this.plantDead=true;
@@ -74,12 +86,22 @@ export class Ranch {
       changeHoverImage(hoseImage);
       giveWater(this);
       if (!this.plantDead){
-        this.farm["image"] = growImage;
+        if (this.farm["typeOfCrop"]=="Corn"){
+          this.farm["image"] = growImage;
+        } else if (this.farm["typeOfCrop"]=="Potato"){
+          this.farm["image"] = growPotato;
+        } else {
+          this.farm["image"] = growWheat;
+        }
       }
       changeFarmImage(this.farm["image"]);
       if(this.plantIsReady() == true) {
         if (this.farm["typeOfCrop"]=="Corn" && !this.plantDead) {
           this.farm["image"]=cornImage;
+        } else if (this.farm["typeOfCrop"]=="Potato" && !this.plantDead) {
+          this.farm["image"]=potatoImage;
+        } else if (this.farm["typeOfCrop"]=="Wheat" && !this.plantDead) {
+          this.farm["image"]=wheatImage;
         }
         changeFarmImage(this.farm["image"]);
         changeHoverImage(sickleImage);
@@ -89,18 +111,23 @@ export class Ranch {
       }
     }, 1000);
   }
+
   harvest(){
     this.farm["image"] = bareImage;
     changeFarmImage(this.farm["image"]);
     if (this.farm["typeOfCrop"]=="Corn"){
       this.corn+=this.farm["harvestProduction"];
-      this.farm["harvestProduction"]=0;
-      this.start();
-      console.log(this.corn);
+    }else if(this.farm["typeOfCrop"]=="Potato"){
+      this.potato+=this.farm["harvestProduction"];
+    }else{
+      this.wheat+=this.farm["harvestProduction"];
     }
-
-
+    this.farm["harvestProduction"]=0;
+    this.start();
+    console.log(this.corn);
   }
+
+
   cropIsDead() {
     if(this.cropLife <=0) {
       return true;
@@ -129,14 +156,14 @@ export class Ranch {
         that.planting();
       });
       $("img#potato").click(function(){
-        $("img#corn").off("click");
+        $("img#potato").off("click");
         that.farm["typeOfCrop"]="Potato";
         that.farm["timeToGrow"]=120;
         that.farm["harvestProduction"]=600;
         that.planting();
       });
       $("img#wheat").click(function(){
-        $("img#corn").off("click");
+        $("img#wheat").off("click");
         that.farm["typeOfCrop"]="Wheat";
         that.farm["timeToGrow"]=180;
         that.farm["harvestProduction"]=300;
