@@ -1,10 +1,23 @@
 .cropselection {
   display: none;
 }
+.bakedSelection {
+  display: none;
+}
+
 img#farm {
   width: 160%;
 }
-.redborder{
+
+.redborder {
   border: solid;
   border-color: red;
+}
+.greenborder {
+  border: solid;
+  border-color: green;
+}
+
+.container {
+  padding: 10px;
 }

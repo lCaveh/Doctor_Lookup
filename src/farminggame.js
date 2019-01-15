@@ -10,6 +10,12 @@ import potatoImage from './img/potatoImage.png';
 import wheatImage from './img/wheatImage.png';
 import deadPotato from './img/deadPotato.png';
 import deadWheat from './img/deadWheat.png';
+import bakeryImage from './img/bakery.jpg';
+import breadImage from './img/bread.png';
+import cakeImage from './img/cake.png';
+import mPotatoesImage from './img/mPotato.png';
+import bakeryWorking from './img/bakeryWorking.png';
+
 import $ from 'jQuery';
 
 export class Ranch {
@@ -26,6 +32,7 @@ export class Ranch {
     this.coin=0;
     this.plantDead=false;
     this.readyToHarvest=false;
+    this.readyToTake=false;
     this.farm= {
       image:bareImage,
       typeOfCrop: "",
@@ -124,7 +131,6 @@ export class Ranch {
     }
     this.farm["harvestProduction"]=0;
     this.start();
-    console.log(this.corn);
   }
 
 
@@ -178,6 +184,88 @@ export class Ranch {
     this.setLife();
     this.growing();
   }
+  stat(){
+    const statusInterval = setInterval(() => {
+      $("span#cornAmount").text(this.corn);
+      $("span#potatoAmount").text(this.potato);
+      $("span#wheatAmount").text(this.wheat);
+      $("span#breadAmount").text(this.bread);
+      $("span#mPotatoAmount").text(this.mashedPotato);
+      $("span#cakeAmount").text(this.cake);
+      $("span#coinAmount").text(this.coin);
+    }, 1000);
+  }
+  startBaking(){
+    let that=this;
+    $("img#bakery").click(function(){
+      $("img#bakery").off();
+      $(".bakedSelection").show();
+      $("img#bread").click(function(){
+        $("img#bread").off("click");
+        that.bakery["typeOfProduction"]="Bread";
+        that.bakery["timeToBake"]=60;
+        that.bakery["productionAmount"]=100;
+        that.baking();
+      });
+      $("img#cake").click(function(){
+        $("img#cake").off("click");
+        that.bakery["typeOfProduction"]="Cake";
+        that.bakery["timeToBake"]=180;
+        that.bakery["productionAmount"]=20;
+        that.baking();
+      });
+      $("img#mPotato").click(function(){
+        $("img#mPotato").off("click");
+        that.bakery["typeOfProduction"]="MPotato";
+        that.bakery["timeToBake"]=120;
+        that.bakery["productionAmount"]=50;
+        that.baking();
+      });
+
+    });
+  }
+  baking(){
+    $(".bakedSelection").hide();
+    this.readyToTake=false;
+    this.setBake();
+
+  }
+  setBake() {
+    const bakeInterval = setInterval(() => {
+      $("img#bakery").attr("src",bakeryWorking);
+      this.bakery["timeToBake"]--;
+      if(this.bakery["timeToBake"]<=0){
+        $("img#bakery").attr("src",bakeryImage);
+        $("img#bakery").addClass("greenborder");
+        clearInterval(bakeInterval);
+        this.readyToTake=true;
+        this.readyMeal();
+        return "Your meal is ready";
+      } else {
+        $("img#bakery").removeClass("greenborder");
+      }
+    }, 1000);
+  }
+  readyMeal(){
+    console.log("readyMeal");
+    let that=this;
+    $("img#bakery").click(function(){
+      $("img#bakery").off();
+      that.getMeal();
+    });
+  }
+  getMeal(){
+    console.log("getMeal");
+    if (this.bakery["typeOfProduction"]=="Bread"){
+      this.bread+=this.bakery["productionAmount"];
+    }else if(this.bakery["typeOfProduction"]=="MPotato"){
+      this.mashedPotato+=this.bakery["productionAmount"];
+    }else{
+      this.cake+=this.bakery["productionAmount"];
+    }
+    this.bakery["productionAmount"]=0;
+    this.startBaking();
+  }
 }
 function changeFarmImage(image){
   $("img#farm").attr("src",image);
@@ -194,6 +282,12 @@ function giveWater(farm){
   })
 }
 function harvestTime(farm){
+  $("img#farm").click(function(){
+    $("img#farm").off();
+    farm.harvest();
+  })
+}
+function getMeal(farm){
   $("img#farm").click(function(){
     $("img#farm").off();
     farm.harvest();
