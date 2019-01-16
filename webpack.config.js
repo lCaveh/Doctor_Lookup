@@ -18,7 +18,7 @@ module.exports = {
         new UglifyJsPlugin({ sourceMap: true }),
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Open Weather',
+            title: 'NASA Picture of the Day',
             template: './src/index.html',
             inject: 'body',
         }),
