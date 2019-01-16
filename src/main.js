@@ -1,30 +1,21 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
-import './styles.css';
-import $ from 'jQuery';
-import { Ranch } from './farminggame';
-import bareImage from './img/bare.png';
-import growImage from './img/growing.png';
-import cornImage from './img/corn.png';
-import deadCorn from './img/dead.png';
-import potatoImage from './img/potatoImage.png';
-import wheatImage from './img/wheatImage.png';
-import bakeryImage from './img/bakery.jpg'
-import breadImage from './img/bread.png';
-import cakeImage from './img/cake.png';
-import mPotatoesImage from './img/mPotato.png';
 
 $(document).ready(function() {
-  let ranch= new Ranch();
-  $("img#farm").attr("src",bareImage);
-  $("img#bakery").attr("src", bakeryImage);
-  $("img#corn").attr("src",cornImage);
-  $("img#potato").attr("src",potatoImage);
-  $("img#wheat").attr("src",wheatImage);
-  $("img#bread").attr("src",breadImage);
-  $("img#cake").attr("src",cakeImage);
-  $("img#mPotato").attr("src",mPotatoesImage);
-  ranch.stat();
-  ranch.start();
-  ranch.startBaking();
+  $('#weatherLocation').click(function() {
+    let city = $('#location').val();
+    $('#location').val("");
+    $.ajax({
+      url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`,
+      type: 'GET',
+      data: {
+        format: 'json'
+      },
+      success: function(response) {
+        $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
+        $('.showTemp').text(`The temperature in Kelvins is ${response.main.temp}.`);
+      },
+      error: function() {
+        $('#errors').text("There was an error processing your request. Please try again.");
+      }
+    });
+  });
 });
