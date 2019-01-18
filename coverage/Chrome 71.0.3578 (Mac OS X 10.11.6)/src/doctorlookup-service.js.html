@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/doctorlookup-service.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> doctorlookup-service.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">30.77% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>8/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.27% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">!function(e){var t={};function r(n){<span class="missing-if-branch" title="if path not taken" >I</span>if(t[n])<span class="cstat-no" title="statement not covered" >return t[n].exports;v</span>ar s=t[n]={i:n,l:!1,exports:{}};return e[n].call(s.exports,s,s.exports,r),s.l=!0,s.exports}r.m=e,r.c=t,r.d=<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})}</span>,r.r=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>"undefined"!=typeof Symbol&amp;&amp;Symbol.toStringTag&amp;&amp;Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}</span>,r.t=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>if(1&amp;t&amp;&amp;(e=r(e)),8&amp;t)<span class="cstat-no" title="statement not covered" >return e;<span class="cstat-no" title="statement not covered" >i</span></span>f(4&amp;t&amp;&amp;"object"==typeof e&amp;&amp;e&amp;&amp;e.__esModule)<span class="cstat-no" title="statement not covered" >return e;<span class="cstat-no" title="statement not covered" >v</span></span>ar n=Object.create(null);<span class="cstat-no" title="statement not covered" >i</span>f(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&amp;t&amp;&amp;"string"!=typeof e)<span class="cstat-no" title="statement not covered" >for(var s in e)<span class="cstat-no" title="statement not covered" >r.d(n,s,<span class="fstat-no" title="function not covered" >function(t){<span class="cstat-no" title="statement not covered" ></span>return e[t]}</span>.bind(null,s));<span class="cstat-no" title="statement not covered" >r</span></span></span>eturn n}</span>,r.n=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=e&amp;&amp;e.__esModule?<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e.default}</span>:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e}</span>;<span class="cstat-no" title="statement not covered" >r</span>eturn r.d(t,"a",t),t}</span>,r.o=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>return Object.prototype.hasOwnProperty.call(e,t)}</span>,r.p="/var/folders/zz/zyxvpxvq6csfxvn_n00000s4000069/T/_karma_webpack_/",r(r.s=13)}({13:function(module,exports,__webpack_require__){"use strict";eval('\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }\n\nvar DoctorLookup = exports.DoctorLookup = function () {\n  function DoctorLookup() {\n    _classCallCheck(this, DoctorLookup);\n  }\n\n  _createClass(DoctorLookup, [{\n    key: "searchDoctorByIssue",\n    value: function searchDoctorByIssue(issue) {\n      return new Promise(function (resolve, reject) {\n        var request = new XMLHttpRequest();\n        var url = "https://api.betterdoctor.com/2016-03-01/doctors?query=" + issue + "&amp;location=wa-seattle&amp;user_location=47.6062%2C-122.3321&amp;skip=0&amp;limit=10&amp;user_key=" + "b864c187ec3cdc720360baa84b479bc6";\n        request.onload = function () {\n          if (this.status === 200) {\n            resolve(request.response);\n          } else {\n            reject(Error(request.statusText));\n          }\n        };\n        request.open("GET", url, true);\n        request.send();\n      });\n    }\n  }, {\n    key: "searchDoctorByName",\n    value: function searchDoctorByName(name) {\n      return new Promise(function (resolve, reject) {\n        var request = new XMLHttpRequest();\n        var url = "https://api.betterdoctor.com/2016-03-01/doctors?name=" + name + "&amp;location=wa-seattle&amp;user_location=47.6062%2C-122.3321&amp;skip=0&amp;limit=10&amp;user_key=" + "b864c187ec3cdc720360baa84b479bc6";\n        request.onload = function () {\n          if (this.status === 200) {\n            resolve(request.response);\n          } else {\n            reject(Error(request.statusText));\n          }\n        };\n        request.open("GET", url, true);\n        request.send();\n      });\n    }\n  }]);\n\n  return DoctorLookup;\n}();//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZG9jdG9ybG9va3VwLXNlcnZpY2UuanM/ZDQ3MiJdLCJuYW1lcyI6WyJEb2N0b3JMb29rdXAiLCJpc3N1ZSIsIlByb21pc2UiLCJyZXNvbHZlIiwicmVqZWN0IiwicmVxdWVzdCIsIlhNTEh0dHBSZXF1ZXN0IiwidXJsIiwicHJvY2VzcyIsIm9ubG9hZCIsInN0YXR1cyIsInJlc3BvbnNlIiwiRXJyb3IiLCJzdGF0dXNUZXh0Iiwib3BlbiIsInNlbmQiLCJuYW1lIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0lBQ2FBLFksV0FBQUEsWTtBQUNYLDBCQUFhO0FBQUE7QUFFWjs7Ozt3Q0FDbUJDLEssRUFBTztBQUN6QixhQUFPLElBQUlDLE9BQUosQ0FBWSxVQUFTQyxPQUFULEVBQWtCQyxNQUFsQixFQUEwQjtBQUMzQyxZQUFJQyxVQUFVLElBQUlDLGNBQUosRUFBZDtBQUNBLFlBQUlDLGlFQUErRE4sS0FBL0Qsd0ZBQXVKTyxrQ0FBM0o7QUFDQUgsZ0JBQVFJLE1BQVIsR0FBaUIsWUFBVztBQUMxQixjQUFJLEtBQUtDLE1BQUwsS0FBZ0IsR0FBcEIsRUFBeUI7QUFDdkJQLG9CQUFRRSxRQUFRTSxRQUFoQjtBQUNELFdBRkQsTUFFTztBQUNMUCxtQkFBT1EsTUFBTVAsUUFBUVEsVUFBZCxDQUFQO0FBQ0Q7QUFDRixTQU5EO0FBT0FSLGdCQUFRUyxJQUFSLENBQWEsS0FBYixFQUFvQlAsR0FBcEIsRUFBeUIsSUFBekI7QUFDQUYsZ0JBQVFVLElBQVI7QUFDRCxPQVpNLENBQVA7QUFhRDs7O3VDQUNrQkMsSSxFQUFNO0FBQ3ZCLGFBQU8sSUFBSWQsT0FBSixDQUFZLFVBQVNDLE9BQVQsRUFBa0JDLE1BQWxCLEVBQTBCO0FBQzNDLFlBQUlDLFVBQVUsSUFBSUMsY0FBSixFQUFkO0FBQ0EsWUFBSUMsZ0VBQThEUyxJQUE5RCx3RkFBcUpSLGtDQUF6SjtBQUNBSCxnQkFBUUksTUFBUixHQUFpQixZQUFXO0FBQzFCLGNBQUksS0FBS0MsTUFBTCxLQUFnQixHQUFwQixFQUF5QjtBQUN2QlAsb0JBQVFFLFFBQVFNLFFBQWhCO0FBQ0QsV0FGRCxNQUVPO0FBQ0xQLG1CQUFPUSxNQUFNUCxRQUFRUSxVQUFkLENBQVA7QUFDRDtBQUNGLFNBTkQ7QUFPQVIsZ0JBQVFTLElBQVIsQ0FBYSxLQUFiLEVBQW9CUCxHQUFwQixFQUF5QixJQUF6QjtBQUNBRixnQkFBUVUsSUFBUjtBQUNELE9BWk0sQ0FBUDtBQWFEIiwiZmlsZSI6IjEzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG5leHBvcnQgY2xhc3MgRG9jdG9yTG9va3VwIHtcbiAgY29uc3RydWN0b3IoKXtcblxuICB9XG4gIHNlYXJjaERvY3RvckJ5SXNzdWUoaXNzdWUpIHtcbiAgICByZXR1cm4gbmV3IFByb21pc2UoZnVuY3Rpb24ocmVzb2x2ZSwgcmVqZWN0KSB7XG4gICAgICBsZXQgcmVxdWVzdCA9IG5ldyBYTUxIdHRwUmVxdWVzdCgpO1xuICAgICAgbGV0IHVybCA9IGBodHRwczovL2FwaS5iZXR0ZXJkb2N0b3IuY29tLzIwMTYtMDMtMDEvZG9jdG9ycz9xdWVyeT0ke2lzc3VlfSZsb2NhdGlvbj13YS1zZWF0dGxlJnVzZXJfbG9jYXRpb249NDcuNjA2MiUyQy0xMjIuMzMyMSZza2lwPTAmbGltaXQ9MTAmdXNlcl9rZXk9JHtwcm9jZXNzLmVudi5BUElfS0VZfWA7XG4gICAgICByZXF1ZXN0Lm9ubG9hZCA9IGZ1bmN0aW9uKCkge1xuICAgICAgICBpZiAodGhpcy5zdGF0dXMgPT09IDIwMCkge1xuICAgICAgICAgIHJlc29sdmUocmVxdWVzdC5yZXNwb25zZSk7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgcmVqZWN0KEVycm9yKHJlcXVlc3Quc3RhdHVzVGV4dCkpO1xuICAgICAgICB9XG4gICAgICB9O1xuICAgICAgcmVxdWVzdC5vcGVuKFwiR0VUXCIsIHVybCwgdHJ1ZSk7XG4gICAgICByZXF1ZXN0LnNlbmQoKTtcbiAgICB9KTtcbiAgfVxuICBzZWFyY2hEb2N0b3JCeU5hbWUobmFtZSkge1xuICAgIHJldHVybiBuZXcgUHJvbWlzZShmdW5jdGlvbihyZXNvbHZlLCByZWplY3QpIHtcbiAgICAgIGxldCByZXF1ZXN0ID0gbmV3IFhNTEh0dHBSZXF1ZXN0KCk7XG4gICAgICBsZXQgdXJsID0gYGh0dHBzOi8vYXBpLmJldHRlcmRvY3Rvci5jb20vMjAxNi0wMy0wMS9kb2N0b3JzP25hbWU9JHtuYW1lfSZsb2NhdGlvbj13YS1zZWF0dGxlJnVzZXJfbG9jYXRpb249NDcuNjA2MiUyQy0xMjIuMzMyMSZza2lwPTAmbGltaXQ9MTAmdXNlcl9rZXk9JHtwcm9jZXNzLmVudi5BUElfS0VZfWA7XG4gICAgICByZXF1ZXN0Lm9ubG9hZCA9IGZ1bmN0aW9uKCkge1xuICAgICAgICBpZiAodGhpcy5zdGF0dXMgPT09IDIwMCkge1xuICAgICAgICAgIHJlc29sdmUocmVxdWVzdC5yZXNwb25zZSk7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgcmVqZWN0KEVycm9yKHJlcXVlc3Quc3RhdHVzVGV4dCkpO1xuICAgICAgICB9XG4gICAgICB9O1xuICAgICAgcmVxdWVzdC5vcGVuKFwiR0VUXCIsIHVybCwgdHJ1ZSk7XG4gICAgICByZXF1ZXN0LnNlbmQoKTtcbiAgICB9KTtcbiAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///13\n')}});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jan 18 2019 10:26:12 GMT-0800 (PST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
