@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Doctor Search</h1>
+      <div class="intro">
+        <button type="button" name="nameSearch" id="nameSearch">Search Doctors in your area by name</button>
+        <button type="button" name="issueSearch" id="issueSearch">Search Doctors in your area by issue</button>
+      </div>
+      <form id="searchByName">
+        <label for="name">Enter Doctor Name: </label>
+        <input type="text" id="name" required>
+        <button class="btn btn-info" type="submit">Submit</button>
+      </form>
+      <br>
+      <form id="searchByIssue">
+        <label for="issue">Enter the reason you want to visit a doctor: </label>
+        <input type="text" id="issue" required>
+        <button class="btn btn-success" type="submit">Submit</button>
+      </form>
+      <div>
+        <ul id="result"></ul>
+      </div>
+    </div>
+  </body>
+</html>
